@@ -1,6 +1,6 @@
 # Navbar Starter
 
-This project provides a simple HTML/CSS starter template with a pre-designed navigation bar.
+This project provides a simple HTML/CSS starter template with a pre-designed navigation bar and sidebar.
 
 ## How to Use
 
