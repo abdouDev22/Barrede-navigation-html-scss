@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>G-User</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="content.css">
+
+
+</head>
+<body>
+
+  
+
+<nav>
+
+</nav>
+  
+  
+
+  <div class="con">
+    <p>Abdu</p>
+    </div>
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web-animations-js@2.3.2/web-animations.min.js"></script>
+
+<script>
+  var grid = new Muuri('.grid', {
+   dragEnabled: true,
+   dragHandle: '.item-content', 
+   layout: {
+     fillGaps: true,
+     horizontal: false,
+   },
+   layoutDuration: 500
+ });
+ function resizeGrid() {
+   grid.layout();
+ }
+ const navdd = document.querySelector('.barre-plant');
+ const lien=document.querySelector('.lien-ret')
+
+window.addEventListener('scroll', () => {
+const scrollY = window.scrollY;
+
+if (scrollY > 30) {
+ navdd.style.backgroundColor = '#24075baa';
+ navdd.style.color = '#dcdde1';
+ 
+ lien.style.backgroundColor='#dcdde1'
+ 
+} else {
+
+ lien.style.backgroundColor='transparent'
+ navdd.style.backgroundColor = 'transparent';
+ navdd.style.color = 'black';
+}
+
+// Ajoutez une transition aux propriétés CSS modifiées
+navdd.style.transition = '0.01s';
+});
+
+
+
+ var filterButton1 = document.querySelector('#searchbar');
+
+filterButton1.addEventListener('keyup', function () {
+
+const titre = document.querySelector('#searchbar');
+
+if (grid && titre) {
+ var items = grid.getItems();
+ var searchTerm = this.value.toLowerCase().replace(/\s/g, ''); 
+
+ for (var i = 0; i < items.length; i++) {
+   var titleElement = items[i].getElement().querySelector('.no1');
+   var categorie = items[i].getElement().querySelector('.categorie1');
+   var prix = items[i].getElement().querySelector('.prix1');
+   var quantite = items[i].getElement().querySelector('.quantite1');
+   if (titleElement) {
+     var title = titleElement.textContent.toLowerCase();
+     var categorie1 = categorie.textContent.toLowerCase();
+     var prix1 = prix.textContent.toLowerCase();
+     var  quantite1 = quantite.textContent.toLowerCase();
+
+     if (title.includes(searchTerm) || categorie1.includes(searchTerm) || prix1.includes(searchTerm) || quantite1.includes(searchTerm)) {
+       items[i].getElement().setAttribute('data-category', 'Refusé');
+     } else {
+       items[i].getElement().setAttribute('data-category', '');
+     }
+   }
+   
+
+  
+ }
+ 
+ 
+
+
+ grid.filter('[data-category="Refusé"]');
+
+
+ 
+
+ grid.layout();
+}
+});
+
+
+
+</script>
+  
+</body>
+</html>
